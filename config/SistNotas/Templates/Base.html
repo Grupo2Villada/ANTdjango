@@ -8,8 +8,24 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+
+
+     <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<script>
+$('.dropdown-trigger').dropdown();
+
+</script>
 </head>
 <body>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
 	 <nav>
     <div class="nav-wrapper green">
       <a href="#" class="brand-logo center">Sistema de carga de notas</a>
@@ -18,26 +34,48 @@
       </ul>
     </div>
   </nav>
+  <center>
+  	<div class="container">
+    	<div class="col s12 m6">
+      	<div class="card blue-grey darken-1">
+        	<div class="card-content white-text">
+          	<span class="card-title">Card Title</span>
+          	<p>I am a very simple card. I am good at containing small bits of information.
+          	I am convenient because I require little markup to use effectively.</p>
+        	</div>
+        	<div class="card-action">
+  			  <!-- Dropdown Trigger -->
+  			<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
 
+  <!-- Dropdown Structure -->
+  				<ul id='dropdown1' class='dropdown-content'>
+    				<li><a href="#!">one</a></li>
+    				<li><a href="#!">two</a></li>
+    				<li class="divider" tabindex="-1"></li>
+    				<li><a href="#!">three</a></li>
+    				<li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+    				<li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+  				</ul>
+          	<a href="#">This is a link</a>
+        	</div>
+        	<script>
+			$('.dropdown-trigger').dropdown();	
 
-  <div class="row center">
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Card Title</span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-  </div>
-            
-     
+			</script>  
+      	</div>
+    	</div>
+  	</div>
+  </center>      
+<script>
+$('.dropdown-trigger').dropdown();	
+
+</script>    
   	
-  
+
 </body>
+<script>
+$('.dropdown-trigger').dropdown();	
+
+</script> 
+
 </html>
