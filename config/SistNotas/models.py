@@ -3,16 +3,16 @@ from django.conf import settings
 # Create your models here.
 
 GRADE_CHOICES = (
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5'),
-    ('6', '6'),
-    ('7', '7'),
-    ('8', '8'),
-    ('9', '9'),
-    ('10', '10'),
+    ('1', "Uno"),
+    ('2', "Dos"),
+    ('3', "Tres"),
+    ('4', "Cuatro"),
+    ('5', 'Cinco'),
+    ('6', 'Seis'),
+    ('7', 'Siete'),
+    ('8', 'Ocho'),
+    ('9', 'Nueve'),
+    ('10', 'Diez'),
 )
 class Professor(models.Model):
     first_name = models.CharField(max_length=20)
@@ -40,8 +40,8 @@ class Subject(models.Model):
     
 class Grade(models.Model):
     value = models.CharField(choices=GRADE_CHOICES, max_length= 2)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='fk_grade')
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='fk_student')
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.value

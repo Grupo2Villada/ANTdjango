@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from SistNotas.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-]
+    url(r'^$', index, name="index"),
+    url(r'^login/', login_user, name="login"),
+    url(r'^logout/', logout_user, name="logout"),
+    url(r'^post/$', grade_post, name="grade_post"),
+
+    ]
