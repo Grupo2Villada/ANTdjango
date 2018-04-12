@@ -1,121 +1,134 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Sistema de Notas</title>
-	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% load static %}
+    <title>Sistema de Notas</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+
 </head>
+
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="mx-auto order-0">
-       <a class="navbar-brand mx-auto navbar-center" href="#">Sistema de carga de notas</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto navbar-center" href="#">Sistema de carga de notas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
-    </div>
-    {% if user.is_authenticated %} 
-    
- <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Welcome {{user.username|title}} </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
-        </ul>
-    </div>
-    {% else %}
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-      <div>
-      <form action="{% url 'login' %}" method="POST" accept-charset="utf-8" id="formLogin">
-      {% csrf_token %}
-        <input type="Text" name="username" placeholder=" Username"><br>
-        <input type="Password" name="password" placeholder=" Password"><br>
-        <input type="submit" class="btn btn-success" value="Submit Button"> 
-       
-	  </form> 
-        </ul>
-      </li>
-        </ul>
-    </div>
-    {% endif %}
-</nav>
-<br>
-{% if form %}
-<div class="container" id="mydiv">
-  <div class="p-3 mb-2 bg-dark text-white">
-    <form id="form" action="{% url 'grade_post' %}" method="POST">
-      {% csrf_token %}
-      <div class="input-group">
+        </div>
+        {% if user.is_authenticated %}
 
-        <select class="custom-select" name="{{ form.value.html_name }}">
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Welcome {{user.username|title}} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login
+        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <div>
+                            <form action="{% url 'login' %}" method="POST" accept-charset="utf-8" id="formLogin">
+                                {% csrf_token %}
+                                <input type="Text" name="username" placeholder=" Username"><br>
+                                <input type="Password" name="password" placeholder=" Password"><br>
+                                <input type="submit" class="btn btn-success" value="Submit Button">
+
+                            </form>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            {% endif %}
+    </nav>
+    <br> {% if form %}
+    <div class="container" id="mydiv">
+        <div class="p-3 mb-2 bg-dark text-white">
+            <form id="form" action="{% url 'grade_post' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    <select class="custom-select" name="{{ form.value.html_name }}">
           <option disabled selected value>Grade</option>
           {% for val in form.value %}
             {{ val }}
           {% endfor %}
 		</select>
-		   <select class="custom-select" name="{{ form.subject.html_name }}">
+                    <select class="custom-select" id="subject" name="{{ form.subject.html_name }}">
           <option disabled selected value>Subject</option>
           {% for sub in form.subject %}
             {{ sub }}
           {% endfor %}
 		</select>
-		   <select class="custom-select" name="{{ form.student.html_name }}">
+                    <select id="student" class="custom-select" name="{{ form.student.html_name }}">
         <option disabled selected value>Student</option>
-          {% for stu in form.student %}
-            {{ stu }}
-          {% endfor %}
+     
         </select>
-        <div class="input-group-append">
-        {% if user.is_authenticated %}
-            <input class="btn btn-secondary" type="submit" value="Agregar nota">
-        {% else %}
-            <a class="btn btn-secondary">Debes estar registrado</a>
-        {% endif %}
+                    <div class="input-group-append">
+                        {% if user.is_authenticated %}
+                        <input class="btn btn-secondary" type="submit" value="Agregar nota"> {% else %}
+                        <a class="btn btn-secondary">Debes estar registrado</a> {% endif %}
+                    </div>
+                </div>
+            </form>
         </div>
-      </div>
-    </form>
-  </div>
-</div>
-{% endif %}
-<script>
-$(document).ready(function(){
-    $("#form").submit(function(){
-        var success = "<div class='alert alert-success bg-dark ' role='alert'>Grade uploaded succesfully</div>";
-        $("body").append(success);
-    });
-});
-$("#mySelect").attr("selectedIndex", -1);
-</script>
+    </div>
+    {% endif %}
 </body>
-<style>
-  .navbar-center{
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    text-align: center;
-}
- body {
-   background-color:#6E6E6E;
 
-} 
-#mydiv {
-    position:fixed;
-    top: 60%;
-    left: 46%;
-    width:35em;
-    height:18em;
-    margin-top: -9em; /*set to a negative number 1/2 of your height*/
-    margin-left: -15em; /*set to a negative number 1/2 of your width*/
-}
-</style>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="{% static 'scripts.js' %}"></script>
+<script>
+    $(document).on('change', "#subject", function () {
+
+        var materia = $("#subject").val();
+        if (parseInt(materia) == NaN) {
+            return false;
+        }
+        $('#student').empty();
+        $('#student').append("<option disabled selected value=false>Student</option>");
+
+        $.ajax({
+            method: "GET",
+            url: "{% url  'get_alumnos' %}",
+            dataType: 'json',
+            data: { csrf_token: "{{ csrf_token }}", id_materia: $("#subject").val() }
+        }).error(function (msg) {
+            console.log("Error: " + msg);
+        }).success(function (data) {
+            var json = $.parseJSON(data);
+            $.each(json, function (index, element) {
+                var nombre = element.first_name + " " + element.last_name;
+                console.log("Alumno id: " + element.id +  "Nombre: " +  nombre);
+                
+                $('#student').append('<option value="'+ element.id+'"> '+ nombre +'</option>');               
+                
+            });
+            
+        });
+
+    });
+
+</script>
+
+
+
 </html>

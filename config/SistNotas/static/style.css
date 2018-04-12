@@ -1,0 +1,20 @@
+.navbar-center{
+position: absolute;
+width: 100%;
+left: 0;
+top: 0;
+text-align: center;
+}
+ body {
+   background-color:#6E6E6E;
+
+} 
+#mydiv {
+    position:fixed;
+    top: 60%;
+    left: 46%;
+    width:35em;
+    height:18em;
+    margin-top: -9em;
+    margin-left: -15em;
+}

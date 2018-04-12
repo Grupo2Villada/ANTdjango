@@ -13,6 +13,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from datetime import datetime, timedelta
 from django.utils import timezone
+
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+
 # Create your views here.
 from .models import *
 from .forms import *
@@ -34,8 +38,17 @@ def logout_user(request):
     logout(request)
     return redirect('/')
 
+def get_alumnos(request):
+    id_materia = request.GET.get('id_materia', None)
+    if id_materia:
+        alumnos = Subject.objects.get(pk=int(id_materia)).students.all().values("id","last_name","first_name")
+        serialized_alumnos = json.dumps(list(alumnos), cls=DjangoJSONEncoder)
+        print serialized_alumnos
+    return JsonResponse(serialized_alumnos, safe=False)
+
 def grade_post(request):
     if request.method == "POST":
+        subjects = Subject.object.filter(professor=request.user)
         form = FormGrade(request.POST)
         if form.is_valid():
             post = form.instance
@@ -47,3 +60,5 @@ def grade_post(request):
     else:
         form = FormGrade() 
     return render(request, 'index.html', {'form': form})
+
+    
