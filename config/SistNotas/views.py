@@ -17,10 +17,9 @@ from django.utils import timezone
 from .models import *
 from .forms import *
 from django import forms
+import time
 
 # Create your views here.
-def index(request):
-    return render(request, 'index.html')
 
 def login_user(request):
     if request.method == "POST":
@@ -43,6 +42,7 @@ def grade_post(request):
             post.user = request.user
             post.published_date = timezone.now()
             post.save() 
+            time.sleep(3)
         return redirect('/')
     else:
         form = FormGrade() 

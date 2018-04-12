@@ -5,3 +5,5 @@ class FormGrade(ModelForm):
     class Meta:
         model = Grade
         fields = ['value', 'subject', 'student']
+
+    
