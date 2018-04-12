@@ -17,28 +17,28 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto navbar-center" href="#">Sistema de carga de notas</a>
+            <center><p class= "navbar-brand navbar-center navbar-text text-light" style="width: 450px; left: 33%;margin-top: 6px"> Sistema de carga de notas</span></center>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
         </div>
         {% if user.is_authenticated %}
 
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Welcome {{user.username|title}} </a>
+                    <a class="nav-link text-light navbar-text" style="margin-right: 40px;">Welcome {{user.username|title}} </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link text-light navbar-text" style="margin-right: 20px;" href="{% url 'logout' %}">Logout</a>
                 </li>
             </ul>
         </div>
         {% else %}
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 " style="min-height: 38px;">
             <ul class="navbar-nav ml-auto">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login
+                    <a class="dropdown-toggle navbar-text text-primary" data-toggle="dropdown" style="margin-right:140px;" href="#">Login
         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <div>
@@ -46,7 +46,7 @@
                                 {% csrf_token %}
                                 <input type="Text" name="username" placeholder=" Username"><br>
                                 <input type="Password" name="password" placeholder=" Password"><br>
-                                <input type="submit" class="btn btn-success" value="Submit Button">
+                                <input type="submit" class="btn btn-success" style="margin-left:65px;" value="Login">
 
                             </form>
                     </ul>
