@@ -15,6 +15,7 @@ GRADE_CHOICES = (
     ('10', 'Diez'),
 )
 class Professor(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)   
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
 
