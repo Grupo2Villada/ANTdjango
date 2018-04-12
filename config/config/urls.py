@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', login_user, name="login"),
     url(r'^get_alumnos$', get_alumnos, name="get_alumnos"),
+    url(r'^get_subjects$', get_subjects, name="get_subjects"),
     url(r'^logout/', logout_user, name="logout"),
     url(r'^$', grade_post, name="grade_post"),
     

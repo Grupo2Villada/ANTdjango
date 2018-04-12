@@ -48,7 +48,6 @@ def get_alumnos(request):
 
 def grade_post(request):
     if request.method == "POST":
-        subjects = Subject.object.filter(professor=request.user)
         form = FormGrade(request.POST)
         if form.is_valid():
             post = form.instance
@@ -60,5 +59,18 @@ def grade_post(request):
     else:
         form = FormGrade() 
     return render(request, 'index.html', {'form': form})
+
+def get_subjects(request):
+    if not request.user.is_authenticated():
+        print "No user"
+    elif request.user.is_superuser:
+        print "Superuser"
+    else:
+        #print request.user
+        subjects = Subject.objects.filter(professors__user=request.user).values("id","name")
+        serialized_subjects = json.dumps(list(subjects), cls=DjangoJSONEncoder)
+        print serialized_subjects
+    return JsonResponse(serialized_subjects, safe=False)
+
 
     

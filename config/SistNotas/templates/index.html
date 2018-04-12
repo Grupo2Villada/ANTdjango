@@ -69,9 +69,6 @@
 		</select>
                     <select class="custom-select" id="subject" name="{{ form.subject.html_name }}">
           <option disabled selected value>Subject</option>
-          {% for sub in form.subject %}
-            {{ sub }}
-          {% endfor %}
 		</select>
                     <select id="student" class="custom-select" name="{{ form.student.html_name }}">
         <option disabled selected value>Student</option>
@@ -126,6 +123,25 @@
         });
 
     });
+
+
+    $(document).ready(function(){
+    $('#subject').empty();
+    $('#subject').append("<option disabled selected value=false>Subject</option>");
+    $.ajax({
+       type: "GET",
+       url: "{% url 'get_subjects'%}",
+       dataType: "json",
+       success: function(data) {
+        var json2 = $.parseJSON(data);
+       $.each(json2, function (index, element) {
+            var nombre = element.name;            
+            $('#subject').append('<option value="'+ element.id+'"> '+ nombre +'</option>');               
+            
+        });
+       }
+     });
+})
 
 </script>
 
