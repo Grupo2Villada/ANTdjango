@@ -3,16 +3,16 @@ from django.conf import settings
 # Create your models here.
 
 GRADE_CHOICES = (
-    ('1', "Uno"),
-    ('2', "Dos"),
-    ('3', "Tres"),
-    ('4', "Cuatro"),
-    ('5', 'Cinco'),
-    ('6', 'Seis'),
-    ('7', 'Siete'),
-    ('8', 'Ocho'),
-    ('9', 'Nueve'),
-    ('10', 'Diez'),
+    ('1', "Uno(1)"),
+    ('2', "Dos(2)"),
+    ('3', "Tres(3)"),
+    ('4', "Cuatro(4)"),
+    ('5', 'Cinco(5)'),
+    ('6', 'Seis(6)'),
+    ('7', 'Siete(7)'),
+    ('8', 'Ocho(8)'),
+    ('9', 'Nueve(9)'),
+    ('10', 'Diez(10)'),
 )
 class Professor(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)   
