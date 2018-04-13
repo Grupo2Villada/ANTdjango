@@ -38,15 +38,15 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 " style="min-height: 38px;">
             <ul class="navbar-nav ml-auto">
                 <li class="dropdown">
-                    <a class="dropdown-toggle navbar-text text-primary" data-toggle="dropdown" style="margin-right:140px;" href="#">Login
+                    <a class="dropdown-toggle navbar-text text-primary" data-toggle="dropdown" style="margin-right:140px;">Login
         <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <div>
+                    <ul class="dropdown-menu" style="background-color: grey;">
+                        <div >
                             <form action="{% url 'login' %}" method="POST" accept-charset="utf-8" id="formLogin">
                                 {% csrf_token %}
-                                <input type="Text" name="username" placeholder=" Username"><br>
-                                <input type="Password" name="password" placeholder=" Password"><br>
-                                <input type="submit" class="btn btn-success" style="margin-left:65px;" value="Login">
+                                <input type="Text" name="username" placeholder=" Username" style="background-color: #a8aaad;width: 90%;margin-left: 10px">
+                                <input type="Password" name="password" placeholder=" Password" style="background-color: #a8aaad;width: 90%;margin-left: 10px">
+                                <input type="submit" class="btn btn-success" style="margin-left:65px;margin-top:10px" value="Login">
 
                             </form>
                     </ul>

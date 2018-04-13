@@ -54,7 +54,7 @@ def grade_post(request):
             post.user = request.user
             post.published_date = timezone.now()
             post.save() 
-            time.sleep(3)
+            time.sleep(2)
         return redirect('/')
     else:
         form = FormGrade() 
@@ -65,6 +65,9 @@ def get_subjects(request):
         print "No user"
     elif request.user.is_superuser:
         print "Superuser"
+        subjects = Subject.objects.all().values("id","name")
+        serialized_subjects = json.dumps(list(subjects), cls=DjangoJSONEncoder)
+        print serialized_subjects
     else:
         #print request.user
         subjects = Subject.objects.filter(professors__user=request.user).values("id","name")
