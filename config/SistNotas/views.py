@@ -63,13 +63,14 @@ def grade_post(request):
 def get_subjects(request):
     if not request.user.is_authenticated():
         print "No user"
+        serialized_subjects = None
     elif request.user.is_superuser:
         print "Superuser"
         subjects = Subject.objects.all().values("id","name")
         serialized_subjects = json.dumps(list(subjects), cls=DjangoJSONEncoder)
         print serialized_subjects
     else:
-        #print request.user
+        print request.user
         subjects = Subject.objects.filter(professors__user=request.user).values("id","name")
         serialized_subjects = json.dumps(list(subjects), cls=DjangoJSONEncoder)
         print serialized_subjects
